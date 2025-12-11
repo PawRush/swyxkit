@@ -1,5 +1,5 @@
 import { getContent } from '$lib/content';
-import { contentCacheHeaders } from "$lib/cacheHeaders";
+import { contentCacheHeaders } from '$lib/cacheHeaders';
 import { error } from '@sveltejs/kit';
 /**
  * @type {import('@sveltejs/kit').RequestHandler}

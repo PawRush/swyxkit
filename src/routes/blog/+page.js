@@ -1,4 +1,4 @@
-import { contentCacheHeaders } from "$lib/cacheHeaders";
+import { contentCacheHeaders } from '$lib/cacheHeaders';
 import { error } from '@sveltejs/kit';
 
 export async function load({ setHeaders, fetch }) {
