@@ -210,6 +210,77 @@ If your `Published` post (any post with one of the labels set in `GH_PUBLISHED_T
 
 If all of this is annoying feel free to rip out the GitHub Issues CMS wiring and do your own content pipeline, I'm not your boss. MDSveX is already set up in this repo if you prefer not having a disconnected content toolchain from your codebase (which is fine, I just like having it in a different place for a better editing experience). See also my blogpost on [the benefits of using GitHub Issues as CMS](https://swyxkit.netlify.app/moving-to-a-github-cms).
 
+## Deployment to AWS
+
+This project is configured for deployment to AWS using CloudFront + S3 with CDK.
+
+### Quick Start
+
+Deploy to your personal preview environment:
+
+```bash
+./scripts/deploy.sh
+```
+
+Deploy to other environments:
+
+```bash
+./scripts/deploy.sh dev    # Deploy to dev environment
+./scripts/deploy.sh prod   # Deploy to production
+```
+
+### CI/CD Pipeline
+
+The project includes a GitHub Actions pipeline (`Deploy to AWS`) that:
+
+- **On main branch push**: Deploys to production (`SwyxkitFrontend-prod`)
+- **On pull request**: Creates preview deployments (`SwyxkitFrontend-preview-{username}`)
+- **Tests & linting**: Runs before deployment
+- **CloudFront cache invalidation**: Automatic after deployment
+- **Preview URLs**: Posted as PR comments for easy testing
+
+#### Required GitHub Secrets
+
+To enable automatic deployments, configure these secrets in your repository settings:
+
+- `AWS_ROLE_TO_ASSUME`: ARN of the IAM role for OIDC federation
+- `AWS_ACCOUNT_ID`: Your AWS account ID
+
+#### Infrastructure
+
+- **S3 Bucket**: `swyxkitfrontend-{environment}-{account-id}`
+- **CloudFront Distribution**: Global CDN with security headers
+- **Logging**: S3 and CloudFront access logs retained for 7 days (preview) / 10 years (prod)
+- **Security**: HSTS, X-Frame-Options, Content-Type options headers
+
+#### Outputs
+
+After deployment, stack outputs include:
+
+- Website URL (CloudFront domain)
+- S3 bucket name
+- Distribution ID (for cache invalidation)
+- CloudFront log bucket
+
+See `deployment_plan.md` for current deployment status and detailed information.
+
+### Local Development
+
+```bash
+npm install --legacy-peer-deps
+npm run build      # Build frontend
+./scripts/deploy.sh # Deploy to AWS
+```
+
+### Cleanup
+
+To remove all AWS resources:
+
+```bash
+cd infra
+npx cdk destroy --all
+```
+
 ## Optimizations to try after you are done deploying
 
 - Customize your JSON+LD for [FAQ pages](https://rodneylab.com/sveltekit-faq-page-seo/), [organization, or products](https://navillus.dev/blog/json-ld-in-sveltekit). There is a schema for blogposts, but it is so dead simple that SwyxKit does not include it.
