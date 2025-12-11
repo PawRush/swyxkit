@@ -17,3 +17,7 @@ vite.config.ts.timestamp-*
 # Local Netlify folder
 .netlify
 .histoire
+
+# CDK outputs
+infra/cdk.out
+infra/dist
