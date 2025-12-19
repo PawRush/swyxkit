@@ -1,0 +1,32 @@
+version: 0.2
+
+env:
+  variables:
+    NPM_CONFIG_PRODUCTION: "false"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - echo "Installing dependencies..."
+      - npm ci --legacy-peer-deps --prefer-offline --no-progress
+
+  build:
+    commands:
+      - echo "Building frontend..."
+      - npm run build
+      - echo "Frontend build complete"
+
+artifacts:
+  files:
+    - ".svelte-kit/output/client/**/*"
+  secondary-artifacts:
+    Client:
+      files:
+        - ".svelte-kit/output/client/**/*"
+  name: FrontendBuildOutput
+
+cache:
+  paths:
+    - "~/.npm/**/*"

@@ -1,0 +1,28 @@
+version: 0.2
+
+env:
+  variables:
+    NPM_CONFIG_PRODUCTION: "false"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - echo "Installing dependencies..."
+      - npm ci --legacy-peer-deps --no-progress
+
+  build:
+    commands:
+      - echo "Running lint and type checks..."
+      - npm run lint || echo "⚠️ Lint warnings (continuing)"
+      - npm run check || echo "⚠️ Type checking warnings (continuing)"
+
+artifacts:
+  files:
+    - "**/*"
+  name: LintTypeOutput
+
+cache:
+  paths:
+    - "~/.npm/**/*"

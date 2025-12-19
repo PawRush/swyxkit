@@ -1,0 +1,47 @@
+version: 0.2
+
+env:
+  variables:
+    NPM_CONFIG_PRODUCTION: "false"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - echo "Installing infra dependencies..."
+      - (cd infra && npm ci --legacy-peer-deps --prefer-offline --no-progress)
+
+  build:
+    commands:
+      - echo "Deploying frontend stack..."
+      - echo "Environment:$ENVIRONMENT"
+      - echo "Stack Name:$STACK_NAME"
+      - (cd infra && npm run build)
+      - (cd infra && npx cdk deploy "$STACK_NAME" --context environment=prod --context withAssets=false --require-approval never --progress events)
+      - echo "Retrieving S3 bucket and CloudFront distribution info..."
+      - |
+        BUCKET=$(aws cloudformation describe-stacks \
+          --stack-name "$STACK_NAME" \
+          --query 'Stacks[0].Outputs[?OutputKey==`BucketName`].OutputValue' \
+          --output text)
+        DIST_ID=$(aws cloudformation describe-stacks \
+          --stack-name "$STACK_NAME" \
+          --query 'Stacks[0].Outputs[?OutputKey==`DistributionId`].OutputValue' \
+          --output text)
+        echo "BUCKET=$BUCKET" >> deploy-outputs.env
+        echo "DISTRIBUTION_ID=$DIST_ID" >> deploy-outputs.env
+      - echo "Syncing frontend assets to S3..."
+      - source deploy-outputs.env && aws s3 sync "$CODEBUILD_SRC_DIR_FrontendBuildOutput/.svelte-kit/output/client/" "s3://$BUCKET/" --delete --cache-control "public, max-age=31536000, immutable" --include "*"
+      - echo "Invalidating CloudFront cache..."
+      - source deploy-outputs.env && aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/*"
+      - echo "Frontend deployment complete"
+
+artifacts:
+  files:
+    - deploy-outputs.env
+  name: FrontendDeployOutput
+
+cache:
+  paths:
+    - "~/.npm/**/*"
