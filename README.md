@@ -27,6 +27,25 @@ Feel free to rip out these opinions as you see fit of course. If you want a SaaS
 
 See https://swyxkit.netlify.app/ (see [Deploy Logs](https://app.netlify.com/sites/swyxkit/deploys))
 
+### AWS Deployment
+
+This project can be deployed to AWS using the provided CDK infrastructure:
+
+```bash
+# Deploy to AWS S3 + CloudFront
+./scripts/deploy.sh
+
+# Deploy to a specific environment
+./scripts/deploy.sh prod
+
+# Deploy infrastructure only (skip asset upload)
+WITH_ASSETS=false ./scripts/deploy.sh
+```
+
+**Deployed Instance (preview-jairosp):** https://d2jug4s3v4zcwk.cloudfront.net
+
+For more details, see `deployment_plan.md` and `AGENTS.md`.
+
 ![screenshot of swyxkit in action](https://user-images.githubusercontent.com/6764957/147861359-3ad9438f-41d1-47c8-aa05-95c7d18497f0.png)
 
 ![screenshot of swyxkit in action](https://user-images.githubusercontent.com/6764957/147861337-d40a1798-e7ff-40e1-8dd8-ba1350fd3784.png)
