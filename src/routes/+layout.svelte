@@ -1,7 +1,21 @@
 <script>
+	import { onMount } from 'svelte';
 	import '../tailwind.css';
 	import Nav from '../components/Nav.svelte';
 	import { MY_TWITTER_HANDLE, MY_YOUTUBE, REPO_URL, SITE_TITLE } from '$lib/siteConfig';
+
+	onMount(async () => {
+		// Initialize Amplify on client-side only
+		if (typeof window !== 'undefined') {
+			try {
+				const { Amplify } = await import('aws-amplify');
+				const outputs = await import('../amplify_outputs.json');
+				Amplify.configure(outputs.default);
+			} catch (error) {
+				console.warn('Amplify initialization skipped or failed:', error);
+			}
+		}
+	});
 </script>
 
 <svelte:head>
