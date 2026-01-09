@@ -25,7 +25,7 @@ Feel free to rip out these opinions as you see fit of course. If you want a SaaS
 
 ## Live Demo
 
-See https://swyxkit.netlify.app/ (see [Deploy Logs](https://app.netlify.com/sites/swyxkit/deploys))
+See https://dzeu3wppdpx2w.cloudfront.net hosted on AWS (also deployed to https://swyxkit.netlify.app/)
 
 ![screenshot of swyxkit in action](https://user-images.githubusercontent.com/6764957/147861359-3ad9438f-41d1-47c8-aa05-95c7d18497f0.png)
 
@@ -210,11 +210,25 @@ If your `Published` post (any post with one of the labels set in `GH_PUBLISHED_T
 
 If all of this is annoying feel free to rip out the GitHub Issues CMS wiring and do your own content pipeline, I'm not your boss. MDSveX is already set up in this repo if you prefer not having a disconnected content toolchain from your codebase (which is fine, I just like having it in a different place for a better editing experience). See also my blogpost on [the benefits of using GitHub Issues as CMS](https://swyxkit.netlify.app/moving-to-a-github-cms).
 
+## Deployment
+
+This project is deployed to AWS with CloudFront + S3 using AWS CDK:
+
+**Deployment URL**: https://dzeu3wppdpx2w.cloudfront.net
+
+To deploy your own version:
+```bash
+./scripts/deploy.sh
+```
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions, architecture overview, and troubleshooting.
+
 ## Optimizations to try after you are done deploying
 
 - Customize your JSON+LD for [FAQ pages](https://rodneylab.com/sveltekit-faq-page-seo/), [organization, or products](https://navillus.dev/blog/json-ld-in-sveltekit). There is a schema for blogposts, but it is so dead simple that SwyxKit does not include it.
 - Have a process to [submit your sitemap to Google](https://developers.google.com/search/docs/advanced/sitemaps/build-sitemap#addsitemap)? (or configure `robots.txt` and hope it works)
 - Testing: make sure you have run `npx playwright install` and then you can run `npm run test`
+- **AWS Deployment**: See [DEPLOYMENT.md](./DEPLOYMENT.md) for custom domain setup, WAF protection, and monitoring
 
 ## Further Reading
 
