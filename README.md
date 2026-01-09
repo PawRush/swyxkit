@@ -223,6 +223,18 @@ To deploy your own version:
 
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions, architecture overview, and troubleshooting.
 
+## CI/CD Pipeline
+
+Automated deployments via AWS CodePipeline:
+
+**Pipeline**: SwyxKitPipeline
+- Triggers automatically on push to `deploy-to-aws` branch
+- Runs quality checks: linting, type checking
+- Builds and deploys to production on success
+- Console: https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/SwyxKitPipeline/view
+
+Deploy to production: `git push origin deploy-to-aws`
+
 ## Optimizations to try after you are done deploying
 
 - Customize your JSON+LD for [FAQ pages](https://rodneylab.com/sveltekit-faq-page-seo/), [organization, or products](https://navillus.dev/blog/json-ld-in-sveltekit). There is a schema for blogposts, but it is so dead simple that SwyxKit does not include it.
