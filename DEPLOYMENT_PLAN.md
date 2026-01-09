@@ -29,8 +29,8 @@ Coding Agents should follow this Deployment Plan, and validate previous progress
 - [x] Step 9: Validate CDK Synth (✓ CloudFormation template generated)
 
 ## Phase 3: Deploy and Validate
-- [ ] Step 10: Execute CDK Deployment
-- [ ] Step 11: Validate CloudFormation Stack
+- [x] Step 10: Execute CDK Deployment (✓ Stack creation complete)
+- [x] Step 11: Validate CloudFormation Stack (✓ CREATE_COMPLETE)
 
 ## Phase 4: Update Documentation
 - [ ] Step 12: Finalize Deployment Plan
@@ -46,11 +46,11 @@ Coding Agents should follow this Deployment Plan, and validate previous progress
 - SPA/Static: Static multi-page site with SvelteKit fallback
 - CloudFront Config: Error responses → fallback file (SvelteKit pattern)
 
-- Deployment URL: [pending]
-- Stack name: [pending]
-- Distribution ID: [pending]
-- Distribution Domain: [pending]
-- S3 Bucket Name: [pending]
+- Deployment URL: https://dzeu3wppdpx2w.cloudfront.net
+- Stack name: SwyxKitFrontend-preview-jairosp
+- Distribution ID: E2Z6TKYT24N3N7
+- Distribution Domain: dzeu3wppdpx2w.cloudfront.net
+- S3 Bucket Name: swyxkitfrontend-preview-jai-cftos3s3bucketcae9f2be-ama655rnea8o
 
 ## Recovery Guide
 
