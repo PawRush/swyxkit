@@ -17,3 +17,6 @@ vite.config.ts.timestamp-*
 # Local Netlify folder
 .netlify
 .histoire
+# playwright
+test-results/
+playwright-report/
