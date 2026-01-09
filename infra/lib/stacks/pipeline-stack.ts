@@ -87,7 +87,7 @@ export class PipelineStack extends cdk.Stack {
     });
 
     new cdk.CfnOutput(this, "PipelineArn", {
-      value: this.pipeline.pipeline.pipelineArn,
+      value: this.pipeline.pipelineArn,
       description: "CodePipeline ARN",
       exportName: "SwyxKitPipelineArn",
     });
