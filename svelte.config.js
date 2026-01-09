@@ -1,6 +1,5 @@
 import preprocess from 'svelte-preprocess';
-import adapterAuto from '@sveltejs/adapter-auto';
-import adapterNode from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-static';
 import { mdsvex } from 'mdsvex';
 import remarkGithub from 'remark-github';
 import remarkAbbr from 'remark-abbr';
@@ -44,9 +43,15 @@ const config = {
 		})
 	],
 
-	// Docs: https://github.com/sveltejs/kit/blob/master/packages/adapter-auto/README.md
+	// Docs: https://kit.svelte.dev/docs/adapter-static
 	kit: {
-		adapter: adapterAuto(),
+		adapter: adapter({
+			pages: 'build',
+			assets: 'build',
+			fallback: 'index.html',
+			precompress: false,
+			strict: true
+		}),
 		// https://kit.svelte.dev/docs/configuration#csp
 		// csp: {
 		// 	directives: {
