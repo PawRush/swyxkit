@@ -1,0 +1,21 @@
+{
+  "version": "48.0.0",
+  "files": {
+    "c4b43247188add4519dba78db0c82c760ebbd3af79163819c545b3f7371e2e0b": {
+      "displayName": "SwyxkitPipelineStack Template",
+      "source": {
+        "path": "SwyxkitPipelineStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "492267476755-us-east-1-70cc0804": {
+          "bucketName": "cdk-hnb659fds-assets-492267476755-us-east-1",
+          "objectKey": "c4b43247188add4519dba78db0c82c760ebbd3af79163819c545b3f7371e2e0b.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::492267476755:role/cdk-hnb659fds-file-publishing-role-492267476755-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

@@ -50,7 +50,7 @@ const config = {
 			assets: 'build',
 			fallback: 'index.html',
 			precompress: false,
-			strict: true
+			strict: false
 		}),
 		// https://kit.svelte.dev/docs/configuration#csp
 		// csp: {
