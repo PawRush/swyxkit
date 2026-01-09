@@ -33,8 +33,8 @@ Coding Agents should follow this Deployment Plan, and validate previous progress
 - [x] Step 11: Validate CloudFormation Stack (✓ CREATE_COMPLETE)
 
 ## Phase 4: Update Documentation
-- [ ] Step 12: Finalize Deployment Plan
-- [ ] Step 13: Update README.md
+- [x] Step 12: Finalize Deployment Plan
+- [x] Step 13: Update README.md (✓ Added deployment section and DEPLOYMENT.md)
 
 ## Deployment Info
 
