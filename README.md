@@ -214,7 +214,7 @@ If all of this is annoying feel free to rip out the GitHub Issues CMS wiring and
 
 - Customize your JSON+LD for [FAQ pages](https://rodneylab.com/sveltekit-faq-page-seo/), [organization, or products](https://navillus.dev/blog/json-ld-in-sveltekit). There is a schema for blogposts, but it is so dead simple that SwyxKit does not include it.
 - Have a process to [submit your sitemap to Google](https://developers.google.com/search/docs/advanced/sitemaps/build-sitemap#addsitemap)? (or configure `robots.txt` and hope it works)
-- Testing: make sure you have run `npx playwright install` and then you can run `npm run test`
+- Testing: make sure you have run `npx playwright install` and then you can run E2E tests using `npm run test:e2e`
 
 ## Further Reading
 
