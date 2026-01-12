@@ -7,7 +7,9 @@ const config = {
 		? undefined
 		: {
 				command: 'npm run build && npm run preview',
-				port: 4173
+				port: 4173,
+				stdout: 'pipe',
+    			stderr: 'pipe',
 			},
 	testDir: 'tests',
 	testMatch: '**/*.{test,spec}.{js,ts,mjs}'
