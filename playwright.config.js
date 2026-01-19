@@ -6,11 +6,11 @@ const config = {
 	webServer: process.env.BASE_URL
 		? undefined
 		: {
-				command: 'npm run build && npm run preview',
-				port: 4173,
-				stdout: 'pipe',
-    			stderr: 'pipe',
-			},
+			command: 'npm run build && npm run preview',
+			port: 4173,
+			stdout: 'pipe',
+			stderr: 'pipe',
+		},
 	testDir: 'tests',
 	testMatch: '**/*.{test,spec}.{js,ts,mjs}'
 };

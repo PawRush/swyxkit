@@ -23,14 +23,6 @@ Feel free to rip out these opinions as you see fit of course. If you want a SaaS
 
 > "Does anyone know what theme that blog is using? It looks really nice." - [anon](https://news.ycombinator.com/item?id=32972871)
 
-## Live Demo
-
-See https://swyxkit.netlify.app/ (see [Deploy Logs](https://app.netlify.com/sites/swyxkit/deploys))
-
-![screenshot of swyxkit in action](https://user-images.githubusercontent.com/6764957/147861359-3ad9438f-41d1-47c8-aa05-95c7d18497f0.png)
-
-![screenshot of swyxkit in action](https://user-images.githubusercontent.com/6764957/147861337-d40a1798-e7ff-40e1-8dd8-ba1350fd3784.png)
-
 ## Users in the wild
 
 - https://swyx.io
