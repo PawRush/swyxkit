@@ -5,6 +5,8 @@ import remarkHTML from 'remark-html';
 import { listContent } from '$lib/content';
 import { contentCacheHeaders } from "$lib/cacheHeaders";
 
+// Prerender this endpoint so it's available as a static file
+export const prerender = true;
 
 // Reference: https://github.com/sveltejs/kit/blob/master/examples/hn.svelte.dev/src/routes/%5Blist%5D/rss.js
 /** @type {import('@sveltejs/kit').RequestHandler} */

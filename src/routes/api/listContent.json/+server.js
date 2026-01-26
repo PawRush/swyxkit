@@ -2,6 +2,9 @@
 import { listContent } from '$lib/content';
 import { contentCacheHeaders } from "$lib/cacheHeaders";
 
+// Prerender this endpoint so it's available as a static JSON file
+export const prerender = true;
+
 /**
  * @type {import('./$types').RequestHandler}
  */

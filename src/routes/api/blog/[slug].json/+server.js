@@ -1,6 +1,16 @@
-import { getContent } from '$lib/content';
+import { getContent, listContent } from '$lib/content';
 import { contentCacheHeaders } from "$lib/cacheHeaders";
 import { error } from '@sveltejs/kit';
+
+// Prerender this endpoint so it's available as a static file
+export const prerender = true;
+
+/** @type {import('./$types').EntryGenerator} */
+export async function entries() {
+	const content = await listContent(fetch);
+	return content.map((item) => ({ slug: item.slug }));
+}
+
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
