@@ -4,9 +4,11 @@ A lightly opinionated starter for [SvelteKit](https://kit.svelte.dev/) blogs:
 
 ## Deployment
 
-Deployed at: https://d28000pi9e9vgi.cloudfront.net, using the [deploy-frontend-app] Agent Standard Operation Procedure from the [AWS MCP](https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html).
+**Production Pipeline**: [SwyxkitPipeline](https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/SwyxkitPipeline/view)
 
-Deployment command: `./scripts/deploy.sh`
+Deploy: `git push origin deploy-to-aws-20260127_182622-sergeyka`
+
+Automated deployments via AWS CodePipeline. Created with the [setup-pipeline] Agent Standard Operation Procedure from the [AWS MCP](https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html).
 
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for full details.
 

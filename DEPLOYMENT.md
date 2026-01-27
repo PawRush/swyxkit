@@ -1,12 +1,15 @@
 # Deployment Summary
 
-Your app is deployed to AWS! Preview URL: https://d28000pi9e9vgi.cloudfront.net
+Your app is deployed to AWS with automated CI/CD!
 
-**Next Step: Automate Deployments**
+**Preview Environment**: https://d28000pi9e9vgi.cloudfront.net (manual deployment)
+**Production Pipeline**: https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/SwyxkitPipeline/view
 
-You're currently using manual deployment. To automate deployments from GitHub, ask your coding agent to set up AWS CodePipeline using an agent SOP for pipeline creation. Try: "create a pipeline using AWS SOPs"
+**Deployment Method**: Automated via AWS CodePipeline
+- Push to `deploy-to-aws-20260127_182622-sergeyka` branch triggers automatic deployment
+- Pipeline runs quality checks (linting, secret scanning) and deploys to production
 
-Services used: CloudFront, S3, CloudFormation, IAM
+Services used: CodePipeline, CodeBuild, CodeConnections, CloudFront, S3, CloudFormation, IAM
 
 Questions? Ask your Coding Agent:
  - What resources were deployed to AWS?
@@ -15,16 +18,19 @@ Questions? Ask your Coding Agent:
 ## Quick Commands
 
 ```bash
-# View deployment status
-aws cloudformation describe-stacks --stack-name "SwyxkitFrontend-preview-sergeyka" --query 'Stacks[0].StackStatus' --output text
+# View pipeline status
+aws codepipeline get-pipeline-state --name SwyxkitPipeline --query 'stageStates[*].[stageName,latestExecution.status]' --output table
 
-# Invalidate CloudFront cache
-aws cloudfront create-invalidation --distribution-id "E1VLRAYHWZHQJK" --paths "/*"
+# Trigger pipeline manually
+aws codepipeline start-pipeline-execution --name SwyxkitPipeline
 
-# View CloudFront access logs (last hour)
-aws s3 ls "s3://swyxkitfrontend-preview-s-cftos3cloudfrontloggingb-njsuwufkeoor/" --recursive | tail -20
+# View build logs
+aws logs tail "/aws/codebuild/SwyxkitPipelineStack-Synth" --follow
 
-# Redeploy
+# Deploy (automatic on push)
+git push origin deploy-to-aws-20260127_182622-sergeyka
+
+# Manual preview deployment
 ./scripts/deploy.sh
 ```
 
