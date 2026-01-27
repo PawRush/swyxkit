@@ -5,7 +5,7 @@ app_name: Swyxkit
 app_type: Frontend Application
 branch: deploy-to-aws-20260127_182622-sergeyka
 created: 2026-01-27T18:26:22Z
-last_updated: 2026-01-27T18:26:22Z
+last_updated: 2026-01-27T18:32:00Z
 ---
 
 # Deployment Plan: Swyxkit
@@ -15,20 +15,20 @@ Coding Agents should follow this Deployment Plan, and validate previous progress
 **IMPORTANT**: Update this plan after EACH step completes. Mark the step `[x]` and update `last_updated` timestamp.
 
 ## Phase 1: Gather Context and Configure
-- [ ] Step 0: Inform User of Execution Flow
-- [ ] Step 1: Create Deployment Plan
-- [ ] Step 2: Create Deploy Branch
-- [ ] Step 3: Detect Build Configuration
-- [ ] Step 4: Validate Prerequisites
-- [ ] Step 5: Revisit Deployment Plan
-- [ ] Phase 1 Checkpoint
+- [x] Step 0: Inform User of Execution Flow
+- [x] Step 1: Create Deployment Plan
+- [x] Step 2: Create Deploy Branch
+- [x] Step 3: Detect Build Configuration
+- [x] Step 4: Validate Prerequisites
+- [x] Step 5: Revisit Deployment Plan
+- [x] Phase 1 Checkpoint
 
 ## Phase 2: Build CDK Infrastructure
-- [ ] Step 6: Initialize CDK Foundation
-- [ ] Step 7: Generate CDK Stack
-- [ ] Step 8: Create Deployment Script
-- [ ] Step 9: Validate CDK Synth
-- [ ] Phase 2 Checkpoint
+- [x] Step 6: Initialize CDK Foundation
+- [x] Step 7: Generate CDK Stack
+- [x] Step 8: Create Deployment Script
+- [x] Step 9: Validate CDK Synth
+- [x] Phase 2 Checkpoint
 
 ## Phase 3: Deploy and Validate
 - [ ] Step 10: Execute CDK Deployment
@@ -48,6 +48,17 @@ Coding Agents should follow this Deployment Plan, and validate previous progress
 - S3 Bucket name: [after creation]
 - CloudFront Log Bucket: [after creation]
 - S3 Log Bucket: [after creation]
+
+## Build Configuration
+
+- Framework: SvelteKit with @sveltejs/adapter-static
+- Package manager: npm
+- Build command: npm run build
+- Output directory: build/
+- Entry point: index.html
+- Base path: / (root)
+- Lint command: npm run lint
+- CloudFront config: SPA with fallback (fallback: 'index.html')
 
 ## Recovery Guide
 
