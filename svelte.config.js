@@ -51,7 +51,7 @@ const config = {
 			fallback: 'index.html',
 			precompress: false,
 			strict: false
-		}),
+		})
 		// https://kit.svelte.dev/docs/configuration#csp
 		// csp: {
 		// 	directives: {

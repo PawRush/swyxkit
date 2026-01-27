@@ -68,6 +68,7 @@
 				</span>
 			</div>
 			<div class="ml-2 flex-1 px-2">
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -- body is sanitized via _sanitize() -->
 				{@html body}
 			</div>
 			<div class="ml-2 mb-4 flex-1 px-2">

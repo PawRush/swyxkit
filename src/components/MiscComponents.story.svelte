@@ -8,7 +8,6 @@
 </script>
 
 <Hst.Story title="Misc Components" layout={{ type: 'grid', width: '100%' }}>
-
 	<!-- <Hst.Variant title="Nav">
 		<Nav />
 	</Hst.Variant> -->
@@ -20,5 +19,4 @@
 	<Hst.Variant title="Newsletter">
 		<Newsletter />
 	</Hst.Variant>
-
 </Hst.Story>

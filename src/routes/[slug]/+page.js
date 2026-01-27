@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { REPO_URL } from '$lib/siteConfig';
-import { contentCacheHeaders } from "$lib/cacheHeaders";
+import { contentCacheHeaders } from '$lib/cacheHeaders';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params, fetch, setHeaders }) {
@@ -8,7 +8,7 @@ export async function load({ params, fetch, setHeaders }) {
 	let [pageData, listData] = await Promise.all([
 		fetch(`/api/blog/${slug}.json`),
 		fetch(`/api/listContent.json`)
-	])
+	]);
 	if (pageData.status > 400) {
 		throw error(pageData.status, await pageData.text());
 	}

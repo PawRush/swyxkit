@@ -1,5 +1,5 @@
 import { getContent, listContent } from '$lib/content';
-import { contentCacheHeaders } from "$lib/cacheHeaders";
+import { contentCacheHeaders } from '$lib/cacheHeaders';
 import { error } from '@sveltejs/kit';
 
 // Prerender this endpoint so it's available as a static file

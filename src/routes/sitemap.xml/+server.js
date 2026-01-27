@@ -1,19 +1,19 @@
 import { SITE_URL } from '$lib/siteConfig';
 import { listContent } from '$lib/content';
-import { contentCacheHeaders } from "$lib/cacheHeaders";
+import { contentCacheHeaders } from '$lib/cacheHeaders';
 
 // Prerender this endpoint so it's available as a static file
 export const prerender = true;
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function GET({ fetch }) {
-  const posts = await listContent(fetch);
+	const posts = await listContent(fetch);
 	const pages = [`about`];
 	const body = sitemap(posts, pages);
 
 	return new Response(body, {
 		headers: {
-      ...contentCacheHeaders('long'),
+			...contentCacheHeaders('long'),
 			'Content-Type': 'application/xml'
 		}
 	});

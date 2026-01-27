@@ -12,8 +12,7 @@
 		"story:dev": "histoire dev",
 		"story:build": "histoire build",
 		"test:e2e": "playwright test",
-		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-		"format": "prettier --write --plugin-search-dir=. ."
+		"lint": "prettier --write . && eslint --fix --ignore-path .gitignore ."
 	},
 	"devDependencies": {
 		"@fontsource/fira-mono": "^5.0.8",

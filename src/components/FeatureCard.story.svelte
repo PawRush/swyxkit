@@ -3,13 +3,13 @@
 <script>
 	import FeatureCard from './FeatureCard.svelte';
 	export let Hst;
-  let prefixString = "Welcome to "
+	let prefixString = 'Welcome to ';
 </script>
 
 <Hst.Story title="FeatureCard" layout={{ type: 'grid', width: '100%' }}>
-  <svelte:fragment slot="controls">
-    <Hst.Text bind:value={prefixString} title="prefixString" />
-  </svelte:fragment>
+	<svelte:fragment slot="controls">
+		<Hst.Text bind:value={prefixString} title="prefixString" />
+	</svelte:fragment>
 	<Hst.Variant title="group usage">
 		<section class="mb-16 w-full">
 			<h3 class="mb-6 text-2xl font-bold tracking-tight text-black dark:text-white md:text-4xl">
@@ -45,14 +45,13 @@
 	</Hst.Variant>
 
 	<Hst.Variant title="Fast">
-    <div class="flex flex-col gap-6 md:flex-row">
-      <FeatureCard title={prefixString + " Fast 2022!"} href="/welcome" stringData="Jan 2022" />
-    </div>
+		<div class="flex flex-col gap-6 md:flex-row">
+			<FeatureCard title={prefixString + ' Fast 2022!'} href="/welcome" stringData="Jan 2022" />
+		</div>
 	</Hst.Variant>
 	<Hst.Variant title="Slow">
-    <div class="flex flex-col gap-6 md:flex-row">
-      <FeatureCard title={prefixString + " Slow 2022!"} href="/welcome" stringData="Jan 2022" />
-    </div>
+		<div class="flex flex-col gap-6 md:flex-row">
+			<FeatureCard title={prefixString + ' Slow 2022!'} href="/welcome" stringData="Jan 2022" />
+		</div>
 	</Hst.Variant>
-
 </Hst.Story>

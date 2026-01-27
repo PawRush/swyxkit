@@ -30,7 +30,7 @@
 
 			<button
 				aria-label="Toggle Newsletter CTA"
-				class="flex h-9 w-9  items-center justify-center rounded-lg ring-gray-300 transition-all hover:ring-2"
+				class="flex h-9 w-9 items-center justify-center rounded-lg ring-gray-300 transition-all hover:ring-2"
 				on:click={toggleNewsletter}
 			>
 				{#if isNewsletterOpen}
@@ -74,7 +74,8 @@
 				action="https://buttondown.email/api/emails/embed-subscribe/swyx"
 				method="post"
 				target="popupwindow"
-				on:submit={() => toggleNewsletter() && window.open('https://buttondown.email/swyx', 'popupwindow')}
+				on:submit={() =>
+					toggleNewsletter() && window.open('https://buttondown.email/swyx', 'popupwindow')}
 			>
 				<input
 					type="email"
