@@ -10,13 +10,14 @@ last_updated: 2026-01-27T11:44:18Z
 
 # Deployment Summary
 
-Your app is deployed to AWS! Preview URL: https://d1kwfvlgjqeukb.cloudfront.net
+Your app is deployed to AWS with automated CI/CD!
 
-**Next Step: Automate Deployments**
+**Production URL:** https://d1kwfvlgjqeukb.cloudfront.net (preview environment)
+**Pipeline:** https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/SwyxkitPipeline/view
 
-You're currently using manual deployment. To automate deployments from GitHub, ask your coding agent to set up AWS CodePipeline using an agent SOP for pipeline creation. Try: "create a pipeline using AWS SOPs"
+**Automated Deployments:** Push to the `deploy-to-aws` branch to trigger automatic deployment
 
-Services used: CloudFront, S3, CloudFormation, IAM
+Services used: CloudFront, S3, CodePipeline, CodeBuild, CloudFormation, IAM
 
 Questions? Ask your Coding Agent:
  - What resources were deployed to AWS?
@@ -25,16 +26,19 @@ Questions? Ask your Coding Agent:
 ## Quick Commands
 
 ```bash
+# View pipeline status
+aws codepipeline get-pipeline-state --name "SwyxkitPipeline" --query 'stageStates[*].[stageName,latestExecution.status]' --output table
+
+# Trigger pipeline manually
+aws codepipeline start-pipeline-execution --name "SwyxkitPipeline"
+
+# View build logs
+aws logs tail "/aws/codebuild/SwyxkitPipelineStack-Synth" --follow
+
 # View deployment status
-aws cloudformation describe-stacks --stack-name "SwyxkitFrontend-preview-sergeyka" --query 'Stacks[0].StackStatus' --output text
+aws cloudformation describe-stacks --stack-name "SwyxkitFrontend-prod" --query 'Stacks[0].StackStatus' --output text
 
-# Invalidate CloudFront cache
-aws cloudfront create-invalidation --distribution-id "E5N65TIKIM4D" --paths "/*"
-
-# View CloudFront access logs (last hour)
-aws s3 ls "s3://swyxkitfrontend-preview-s-cftos3cloudfrontloggingb-5npz7goyksgp/" --recursive | tail -20
-
-# Redeploy
+# Manual deployment (preview environment)
 ./scripts/deploy.sh
 ```
 
@@ -53,6 +57,15 @@ For production deployments, consider:
 
 ## Deployment Info
 
+### Pipeline (Automated Deployment)
+- Pipeline Name: SwyxkitPipeline
+- Pipeline ARN: arn:aws:codepipeline:us-east-1:126593893432:SwyxkitPipeline
+- Pipeline URL: https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/SwyxkitPipeline/view
+- Source Branch: deploy-to-aws
+- Repository: PawRush/swyxkit
+- CodeConnection ARN: arn:aws:codeconnections:us-east-1:126593893432:connection/c140aa0c-7407-42c9-aa4b-7c81f5faf40b
+
+### Preview Environment (Manual Deployment)
 - Deployment URL: https://d1kwfvlgjqeukb.cloudfront.net
 - Stack name: SwyxkitFrontend-preview-sergeyka
 - CloudFront Distribution ID: E5N65TIKIM4D
@@ -60,6 +73,11 @@ For production deployments, consider:
 - CloudFront Log Bucket: swyxkitfrontend-preview-s-cftos3cloudfrontloggingb-5npz7goyksgp
 - S3 Log Bucket: swyxkitfrontend-preview-s-cftos3s3loggingbucket64b-zm8r95udyf7n
 - Deployment Timestamp: 2026-01-27T11:44:18Z
+
+### Production Environment (Pipeline Deployment)
+- Stack name: SwyxkitFrontend-prod
+- Deployment: Managed by pipeline
+- Status: Pipeline running initial deployment
 
 ## Recovery Guide
 
