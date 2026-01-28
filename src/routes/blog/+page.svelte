@@ -41,9 +41,7 @@
 	// https://github.com/sw-yx/swyxkit/pull/171
 	// this will be slow if you have thousands of items, but most people don't
 	let isTruncated = items?.length > 20;
-	
-	
-	
+
 	// we are lazy loading a fuzzy search function
 	// with a fallback to a simple filter function
 	let loaded = false;
@@ -67,10 +65,10 @@
 			loaded = true;
 		});
 	}
-	if ($search) loadsearchFn()
+	if ($search) loadsearchFn();
 	/** @type import('$lib/types').ContentItem[]  */
 	let list;
-	$: searchFn(items, $selectedCategories, $search).then(_items => list = _items);
+	$: searchFn(items, $selectedCategories, $search).then((_items) => (list = _items));
 
 	// .slice(0, isTruncated ? 2 : items.length);
 </script>

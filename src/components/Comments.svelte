@@ -5,7 +5,7 @@
 	export let data = [];
 	import { onMount } from 'svelte';
 	onMount(async () => {
-    if (data.length) return; // data has been passed in from above, so dont bother loading
+		if (data.length) return; // data has been passed in from above, so dont bother loading
 		data = await (await fetch(ghMetadata.commentsUrl)).json();
 	});
 	import Comment from './Comment.svelte';

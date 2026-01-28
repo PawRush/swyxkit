@@ -1,16 +1,14 @@
 <script>
-	import { onMount } from "svelte";
-
+	import { onMount } from 'svelte';
 
 	export let tocStore;
 	let isOpen = false;
 	onMount(() => {
 		// set isOpen if window width is mobile checking the media query
-		if (window.matchMedia("(min-width: 640px)").matches) {
+		if (window.matchMedia('(min-width: 640px)').matches) {
 			isOpen = true;
 		}
-	})
-
+	});
 </script>
 
 <!-- Table of contents thing -->
