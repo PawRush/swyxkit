@@ -40,8 +40,8 @@ Coding Agents should follow this Deployment Plan, and validate previous progress
 
 ## Phase 3: Deploy and Validate
 
-- [ ] Step 10: Execute CDK Deployment
-- [ ] Step 11: Validate CloudFormation Stack
+- [x] Step 10: Execute CDK Deployment
+- [x] Step 11: Validate CloudFormation Stack
 
 ## Phase 4: Update Documentation
 
@@ -52,10 +52,13 @@ Coding Agents should follow this Deployment Plan, and validate previous progress
 
 - Framework: SvelteKit with @sveltejs/adapter-static
 - Build Output: build/
-- Deployment URL: [after completion]
-- Stack Name: [after creation]
-- CloudFront Distribution ID: [after creation]
-- S3 Bucket Name: [after creation]
+- Deployment URL: https://d2p3wv5iu19p00.cloudfront.net
+- Stack Name: SwyxkitFront-preview-sergeyka
+- CloudFront Distribution ID: E3UIOWXV4BV8TK
+- S3 Bucket Name: swyxkitfront-preview-sergey-cftos3s3bucketcae9f2be-theozhrixri5
+- CloudFront Log Bucket: swyxkitfront-preview-serg-cftos3cloudfrontloggingb-jcgktdwrk5ly
+- S3 Log Bucket: swyxkitfront-preview-serg-cftos3s3loggingbucket64b-a43jtaihnypp
+- Deployment Time: 2026-01-28T13:36:23Z
 
 ## Recovery Guide
 
