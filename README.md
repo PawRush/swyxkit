@@ -2,11 +2,13 @@
 
 ## Deployment
 
-Deployed at: https://d2p3wv5iu19p00.cloudfront.net, using the [deploy-frontend-app] Agent Standard Operation Procedure from the [AWS MCP](https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html).
+**Automated CI/CD Pipeline:** Changes pushed to `deploy-to-aws-20260128_131744-sergeyka` branch automatically deploy to production.
 
-Deployment command: `./scripts/deploy.sh`
+Pipeline: https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/SwyxkitPipeline/view
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for full details.
+Deploy: `git push origin deploy-to-aws-20260128_131744-sergeyka`
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for full details. Created with the [setup-pipeline] Agent Standard Operation Procedure from the [AWS MCP](https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html).
 
 ---
 

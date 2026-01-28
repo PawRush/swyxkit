@@ -1,12 +1,12 @@
 # Deployment Summary
 
-Your app is deployed to AWS! Preview URL: https://d2p3wv5iu19p00.cloudfront.net
+Your app has automated CI/CD! Changes pushed to `deploy-to-aws-20260128_131744-sergeyka` branch trigger automatic deployments to production.
 
-**Next Step: Automate Deployments**
+**Production URL:** Will be available after first pipeline deployment completes
+**Preview URL:** https://d2p3wv5iu19p00.cloudfront.net (preview environment)
+**Pipeline:** https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/SwyxkitPipeline/view
 
-You're currently using manual deployment. To automate deployments from GitHub, ask your coding agent to set up AWS CodePipeline using an agent SOP for pipeline creation. Try: "create a pipeline using AWS SOPs"
-
-Services used: CloudFront, S3, CloudFormation, IAM
+Services used: CodePipeline, CodeBuild, CloudFront, S3, CloudFormation, IAM, CodeConnections
 
 Questions? Ask your Coding Agent:
 
@@ -16,16 +16,22 @@ Questions? Ask your Coding Agent:
 ## Quick Commands
 
 ```bash
-# View deployment status
+# View pipeline status
+aws codepipeline get-pipeline-state --name "SwyxkitPipeline" --query 'stageStates[*].[stageName,latestExecution.status]' --output table
+
+# View build logs
+aws logs tail "/aws/codebuild/SwyxkitPipelineStack-Synth" --follow
+
+# Trigger pipeline manually
+aws codepipeline start-pipeline-execution --name "SwyxkitPipeline"
+
+# Deploy to production (automated)
+git push origin deploy-to-aws-20260128_131744-sergeyka
+
+# View preview deployment status
 aws cloudformation describe-stacks --stack-name "SwyxkitFront-preview-sergeyka" --query 'Stacks[0].StackStatus' --output text
 
-# Invalidate CloudFront cache
-aws cloudfront create-invalidation --distribution-id "E3UIOWXV4BV8TK" --paths "/*"
-
-# View CloudFront access logs (last hour)
-aws s3 ls "s3://swyxkitfront-preview-serg-cftos3cloudfrontloggingb-jcgktdwrk5ly/" --recursive | tail -20
-
-# Redeploy
+# Manual preview deployment
 ./scripts/deploy.sh
 ```
 
@@ -112,6 +118,40 @@ None.
 ### Session 1 - 2026-01-28T13:20:00Z - 2026-01-28T13:38:00Z
 
 Agent: Claude Sonnet 4.5
-Progress: Complete deployment - all phases finished successfully
+Progress: Complete manual deployment - all phases finished successfully
 Status: Deployment complete
 URL: https://d2p3wv5iu19p00.cloudfront.net
+
+### Session 2 - 2026-01-28T13:40:00Z - 2026-01-28T13:47:00Z
+
+Agent: Claude Sonnet 4.5
+Progress: Complete pipeline setup - CI/CD automation deployed
+Status: Pipeline deployed and running
+Pipeline URL: https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/SwyxkitPipeline/view
+
+---
+
+## Pipeline Deployment
+
+### Pipeline Info
+
+- Pipeline Name: SwyxkitPipeline
+- Pipeline ARN: arn:aws:codepipeline:us-east-1:126593893432:SwyxkitPipeline
+- Repository: PawRush/swyxkit
+- Branch: deploy-to-aws-20260128_131744-sergeyka
+- CodeConnection: arn:aws:codeconnections:us-east-1:126593893432:connection/c140aa0c-7407-42c9-aa4b-7c81f5faf40b
+- Production Stack: SwyxkitFrontend-prod
+
+### Pipeline Stages
+
+1. **Source**: Pull from GitHub via CodeConnection
+2. **Build**: Install dependencies, run secretlint, build app, CDK synth
+3. **UpdatePipeline**: Self-mutation (if pipeline changed)
+4. **Assets**: Publish file assets to S3
+5. **Deploy**: Deploy SwyxkitFrontend-prod stack
+
+### Quality Checks
+
+- Secretlint: ✓ Enabled (scans for secrets)
+- Lint: ❌ Excluded (fails on build artifacts)
+- Unit Tests: ❌ Excluded (not configured)
