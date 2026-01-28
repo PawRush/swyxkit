@@ -1,5 +1,15 @@
 # SwyxKit
 
+## Deployment
+
+Deployed at: https://d2p3wv5iu19p00.cloudfront.net, using the [deploy-frontend-app] Agent Standard Operation Procedure from the [AWS MCP](https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html).
+
+Deployment command: `./scripts/deploy.sh`
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for full details.
+
+---
+
 A lightly opinionated starter for [SvelteKit](https://kit.svelte.dev/) blogs:
 
 - SvelteKit 1.0 + [Mdsvex](https://mdsvex.pngwn.io/) setup verified to work on Netlify and Vercel
