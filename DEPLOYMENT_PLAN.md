@@ -43,8 +43,8 @@ Coding Agents should follow this Deployment Plan, and validate previous progress
 
 ## Phase 3: Deploy and Validate
 
-- [ ] Step 10: Execute CDK Deployment
-- [ ] Step 11: Validate CloudFormation Stack
+- [x] Step 10: Execute CDK Deployment
+- [x] Step 11: Validate CloudFormation Stack
 
 ## Phase 4: Update Documentation
 
@@ -53,12 +53,13 @@ Coding Agents should follow this Deployment Plan, and validate previous progress
 
 ## Deployment Info
 
-- Deployment URL: (after completion)
-- Stack name: (after creation)
-- Distribution ID: (after creation)
-- S3 bucket name: (after creation)
-- S3 log bucket: (after creation)
-- CloudFront log bucket: (after creation)
+- Deployment URL: https://d311teijeiiiwq.cloudfront.net
+- Stack name: swyxkitFrontend-preview-sergeyka
+- Distribution ID: EI1K4GIDZ8B6I
+- S3 bucket name: swyxkitfrontend-preview-ser-cftos3s3bucketcae9f2be-2ioifz3zju0s
+- S3 log bucket: swyxkitfrontend-preview-s-cftos3s3loggingbucket64b-19dvcowqhedx
+- CloudFront log bucket: swyxkitfrontend-preview-s-cftos3cloudfrontloggingb-d4cjmpytmhou
+- Deployment timestamp: 2026-01-30T05:36:43Z
 
 ## Recovery Guide
 
