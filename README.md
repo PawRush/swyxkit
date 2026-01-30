@@ -1,5 +1,25 @@
 # SwyxKit
 
+## Pipeline
+
+Pipeline: https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/swyxkitPipeline/view
+
+Deploy: `git push origin deploy-to-aws-20260130_032535-sergeyka`
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for full details. Created with the [setup-pipeline] Agent Standard Operation Procedure from the [AWS MCP](https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html).
+
+---
+
+## Deployment
+
+Deployed at: https://d311teijeiiiwq.cloudfront.net, using the [deploy-frontend-app] Agent Standard Operation Procedure from the [AWS MCP](https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html).
+
+Deployment command: `./scripts/deploy.sh`
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for full details.
+
+---
+
 A lightly opinionated starter for [SvelteKit](https://kit.svelte.dev/) blogs:
 
 - SvelteKit 1.0 + [Mdsvex](https://mdsvex.pngwn.io/) setup verified to work on Netlify and Vercel
